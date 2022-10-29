@@ -8,7 +8,7 @@ import { info, stringToBoolean } from "./utils";
 import { parseLogs } from "./parse-log";
 
 const LOG_PATH =
-  process.env.LOG_PATH || path.resolve(path.normalize("/home/discordbots/meppis/DuccBot/v2/storage/ranking"));
+  process.env.LOG_PATH || path.resolve(path.normalize("C:\Projects\DuccBot-Display\example-logs"));
 const FILE_OS_TYPE = process.env.FILE_OS_TYPE || "linux";
 const PUBLIC_PATH =
   process.env.PUBLIC_PATH ||
