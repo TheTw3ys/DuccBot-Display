@@ -6,6 +6,9 @@ import express from "express";
 import { defineAllRoutes } from "./routes";
 import { info, stringToBoolean } from "./utils";
 import { parseLogs } from "./parse-log";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const LOG_PATH =
   process.env.LOG_PATH ||
