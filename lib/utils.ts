@@ -1,10 +1,8 @@
 // This is the value that is used from the Device Manager and the Service Center
 // to use as placeholder for non-existing or invalid values.
-export const NoValue = " No bytes sent ";
+const NoValue = " No bytes sent ";
 
-export const toReadableByteSize = (
-  sizeInBytes: number | null = null
-): string => {
+const toReadableByteSize = (sizeInBytes: number | null = null): string => {
   if (sizeInBytes != null) {
     let i = 0;
     const byteUnits = [
@@ -28,3 +26,4 @@ export const toReadableByteSize = (
   }
   return NoValue;
 };
+console.log(toReadableByteSize(200000));

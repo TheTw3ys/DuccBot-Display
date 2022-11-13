@@ -1,35 +1,38 @@
 import React, { useState, useRef, useEffect } from "react";
 import moment from "moment-timezone";
 import { Table } from "react-bootstrap";
-import { FullCurrentState} from "../../lib/types";
+import { FullCurrentState } from "../../lib/types";
 import { apiClient } from "../apiClient";
 import { TableHeadTriggerTooltip } from "./Tooltip";
 import "moment/locale/de";
 import "moment/locale/en-gb";
 moment.locale("de");
 
-
 type VPNStatusTableProps = {
   logName: string;
 };
-
+let i  = 0;
 export const VPNStatusTable = (props: VPNStatusTableProps) => {
-  const [state, setState] = useState<FullCurrentState>({
+  const parentRef = useRef();
+  let [state, setState] = useState<FullCurrentState>({
     updatedAt: new Date(),
     logname: "",
     users: {},
   });
-  const [open, setOpen] = useState(false);
-  const parentRef = useRef();
+
 
   const poll = async () => {
     const huba = await apiClient.getState(props.logName);
     setState(huba);
   };
-  poll(); //              else user needs to wait for interval
-  useEffect(() => {
-    let timer = setInterval(poll, 4000);
+  if (i === 0) {
+    console.log("polled once")
+    poll();
+  }
 
+  useEffect(() => {
+    let timer = setInterval(poll, 10000);
+    i++
     return () => {
       clearTimeout(timer);
     };

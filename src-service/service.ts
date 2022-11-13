@@ -8,7 +8,8 @@ import { info, stringToBoolean } from "./utils";
 import { parseLogs } from "./parse-log";
 
 const LOG_PATH =
-  process.env.LOG_PATH || path.resolve(path.normalize("C:\Projects\DuccBot-Display\example-logs"));
+  process.env.LOG_PATH ||
+  path.resolve(path.normalize("C:\\Projects\\DuccBot-Display\\example-logs"));
 const FILE_OS_TYPE = process.env.FILE_OS_TYPE || "linux";
 const PUBLIC_PATH =
   process.env.PUBLIC_PATH ||
@@ -41,7 +42,7 @@ try {
 
 setInterval(() => {
   parseLogs(LOG_PATH, FILE_OS_TYPE);
-}, 3000);
+}, 2000);
 
 webServer.listen(parseInt(LISTEN_PORT), LISTEN_HOST, () => {
   info(`The openvpn service is listening on [32m${LISTEN_HOST}[0m:[35m${LISTEN_PORT}[0m`);
