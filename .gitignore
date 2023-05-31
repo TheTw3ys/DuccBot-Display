@@ -1,0 +1,6 @@
+target
+node_modules
+public
+.vscode
+Cargo.lock
+/public/js
